@@ -18,24 +18,32 @@ public class CarroController {
         this.carroService = carroService;
     }
 
-    @GetMapping("/boasVindas")
-    public String boasVindas(){
-        return "Boas Vindas";
-    }
-
+    // ENDPOINT DE LISTAR CARRO
     @GetMapping("/listar")
     public ResponseEntity<List<Carro>> listarCarros(){
         List<Carro> carros = carroService.getAll();
         return ResponseEntity.ok(carros);
     }
 
+    //ENDPOINT DE SALVAR UM CARRO
     @PostMapping("/adicionar")
     public ResponseEntity<Carro> adicionarCarro(@RequestBody Carro newCarro){
         Carro carroSalvo = carroService.save(newCarro);
         return ResponseEntity.status(HttpStatus.CREATED).body(carroSalvo);
     }
 
+    //ENDPOINT DE DELETAR POR ID
+    @DeleteMapping("/deletar/{id}")
+    public ResponseEntity<Void> deletar(@PathVariable Long id){
+        carroService.deletarPorId(id);
+        return ResponseEntity.noContent().build();
+    }
 
-
+    //ENDPOINT DE LISTAR POR ID
+    @GetMapping("/listar/{id}")
+    public ResponseEntity<Carro> listarCarroPorId(@PathVariable Long id){
+        Carro carro = carroService.procurarPorId(id);
+        return ResponseEntity.ok(carro);
+    }
 
 }
