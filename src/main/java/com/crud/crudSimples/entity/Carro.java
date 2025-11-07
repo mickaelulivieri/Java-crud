@@ -11,8 +11,6 @@ import lombok.Setter;
 @Table(name = "tb_carros")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
 public class Carro {
 
     @Id
@@ -32,7 +30,71 @@ public class Carro {
 
     private String valor;
 
-    private boolean disponível = true;
+    private boolean disponivel = true;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
+
+    public String getValor() {
+        return valor;
+    }
+
+    public void setValor(String valor) {
+        this.valor = valor;
+    }
+
+    public String getQuilometragem() {
+        return quilometragem;
+    }
+
+    public void setQuilometragem(String quilometragem) {
+        this.quilometragem = quilometragem;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public Marca getMarca() {
+        return marca;
+    }
+
+    public void setMarca(Marca marca) {
+        this.marca = marca;
+    }
 
     @Override
     public String toString() {
@@ -42,7 +104,7 @@ public class Carro {
                 " | Cor: " + cor +
                 " | Ano: " + ano +
                 " | Valor: R$" + valor +
-                " | Disponível: " + (disponível ? "Sim" : "Não") +
+                " | Disponível: " + (disponivel ? "Sim" : "Não") +
                 "]";
     }
 }

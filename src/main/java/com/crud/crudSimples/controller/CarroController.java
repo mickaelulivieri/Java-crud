@@ -1,15 +1,15 @@
 package com.crud.crudSimples.controller;
 
 import com.crud.crudSimples.entity.Carro;
-import com.crud.crudSimples.service.CarroService;
-import lombok.AllArgsConstructor;
+import com.crud.crudSimples.service.CarroService;;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/carros")
-
 public class CarroController {
 
     private final CarroService carroService;
@@ -21,6 +21,12 @@ public class CarroController {
     @GetMapping("/boasVindas")
     public String boasVindas(){
         return "Boas Vindas";
+    }
+
+    @GetMapping("/listar")
+    public ResponseEntity<List<Carro>> listarCarros(){
+        List<Carro> carros = carroService.getAll();
+        return ResponseEntity.ok(carros);
     }
 
     @PostMapping("/adicionar")
