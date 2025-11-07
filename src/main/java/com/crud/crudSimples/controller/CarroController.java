@@ -9,10 +9,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/carros")
-@AllArgsConstructor
+
 public class CarroController {
 
-    private CarroService carroService;
+    private final CarroService carroService;
+
+    public CarroController(CarroService carroService) {
+        this.carroService = carroService;
+    }
 
     @GetMapping("/boasVindas")
     public String boasVindas(){
@@ -22,8 +26,6 @@ public class CarroController {
     @PostMapping("/adicionar")
     public ResponseEntity<Carro> adicionarCarro(@RequestBody Carro newCarro){
         Carro carroSalvo = carroService.save(newCarro);
-
-        // Retorno ideal: Status 201 Created com o objeto salvo no corpo da resposta
         return ResponseEntity.status(HttpStatus.CREATED).body(carroSalvo);
     }
 
