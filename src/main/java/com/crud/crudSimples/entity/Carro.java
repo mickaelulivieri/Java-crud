@@ -1,5 +1,6 @@
 package com.crud.crudSimples.entity;
 
+import com.crud.crudSimples.enums.Marca;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,11 +19,11 @@ public class Carro {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Enum marca;
+    private Marca marca;
 
     private String modelo;
 
-    private Enum cor;
+    private String cor;
 
     private int ano;
 
